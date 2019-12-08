@@ -2,6 +2,7 @@ import React, { Props, FunctionComponentFactory } from "react";
 export interface VirtualizedComponentProps extends Props<any> {
     column: number;
     row: number;
+    isScrolling: boolean;
     key: number;
 }
 export declare type VirtualizedComponent = FunctionComponentFactory<VirtualizedComponentProps>;
@@ -16,4 +17,11 @@ export interface VirtualizeProps extends Props<any> {
     style?: React.CSSProperties;
     className?: string;
 }
+export interface ColumnsState {
+    column: VirtualizedComponent;
+    realColumns: number;
+    columnsOffset: number;
+    isScrolling: boolean;
+}
+export declare const ColumnsContext: React.Context<ColumnsState>;
 export declare function Virtualize(props: VirtualizeProps): JSX.Element;
